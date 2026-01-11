@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- 
+        SEO & META INFORMATION
+        Optimized for high indexing speed and relevance for MQTT keywords.
+    -->
+    <title>MQTT Protocol: The Ultimate Guide & Online Simulator | MQTT</title>
+    <meta name="description" content="Comprehensive guide to the MQTT protocol. Learn about Pub/Sub, Brokers, QoS, and simulate MQTT messages directly in your mobile or desktop browser.">
+    <meta name="keywords" content="MQTT, IoT, Internet of Things, Protocol, Pub Sub, Broker, QoS, Mosquitto, HiveMQ, WebSocket, Mobile Optimization, Mqttwebs">
+    <meta name="author" content="MQTTWebs">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3700b3">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mqtt.mqttwebs.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mqtt.mqttwebs.com">
+    <meta property="og:title" content="MQTT Protocol: The Ultimate Guide & Online Simulator">
+    <meta property="og:description" content="Master the MQTT protocol with our deep-dive documentation and interactive real-time simulator. Perfect for mobile and desktop.">
+    <meta property="og:image" content="https://mqtt.mqttwebs.com/assets/og-image.jpg">
+    <meta property="og:site_name" content="MQTT">
+
+    <!-- Twitter Card Data -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mqtt.mqttwebs.com">
+    <meta property="twitter:title" content="MQTT Protocol Guide & Simulator">
+    <meta property="twitter:description" content="Learn MQTT architecture, QoS levels, and security. Try our JS-based MQTT simulator.">
+
+    <!-- 
+        STRUCTURED DATA (JSON-LD) 
+        Helping Google understand the content immediately.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Everything You Need to Know About MQTT",
+      "alternativeHeadline": "The Standard for IoT Messaging",
+      "image": [
+        "https://mqtt.mqttwebs.com/assets/mqtt-banner.jpg"
+       ],
+      "datePublished": "2023-10-27T08:00:00+08:00",
+      "dateModified": "2026-01-11T09:20:00+08:00",
+      "author": {
+        "@type": "Organization",
+        "name": "MQTTWebs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MQTTWebs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mqtt.mqttwebs.com/logo.png"
+        }
+      },
+      "description": "A technical deep dive into Message Queuing Telemetry Transport (MQTT) with an interactive simulator."
+    }
+    </script>
+
+    <!-- 
+        CSS STYLES
+        Contains Reset, Variables, Typography, Layout, Components, and Animations.
+        Fully responsive and dark-mode ready.
+    -->
+    <style>
+        /* =========================================
+           1. ROOT VARIABLES & THEME CONFIGURATION
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --primary-color: #6200ea;
+            --primary-light: #9d46ff;
+            --primary-dark: #0a00b6;
+            --secondary-color: #03dac6;
+            
+            /* Typography Colors */
+            --text-main: #121212;
+            --text-secondary: #555555;
+            
+            /* Background Colors */
+            --bg-body: #f9f9f9;
+            --bg-card: #ffffff;
+            --bg-header: #ffffff;
+            
+            /* UI Elements */
+            --border-color: #e0e0e0;
+            --code-bg: #2d2d2d;
+            --code-text: #f8f8f2;
+            
+            /* Status Colors */
+            --success: #00c853;
+            --error: #d50000;
+            --warning: #ffd600;
+            --info: #29b6f6;
+            
+            /* Spacing Scale */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            
+            /* Font Stacks */
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            
+            /* Shadows & Effects */
+            --shadow-card: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 15px rgba(0,0,0,0.15);
+            --radius-std: 8px;
+            --radius-lg: 16px;
+            --radius-pill: 50px;
+        }
+
+        /* Dark Mode Overrides */
+        [data-theme="dark"] {
+            --text-main: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-header: #1e1e1e;
+            --border-color: #333333;
+            --shadow-card: 0 4px 6px rgba(0,0,0,0.5);
+            --shadow-hover: 0 10px 20px rgba(0,0,0,0.6);
+        }
+
+        /* =========================================
+           2. RESET & GLOBAL STYLES
+           ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-main);
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+        }
+        
+        h2 { 
+            font-size: 2rem; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 10px; 
+            display: inline-block; 
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        h3 { 
+            font-size: 1.5rem; 
+            margin-top: var(--spacing-md);
+        }
+
+        /* Text Elements */
+        p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 75ch; /* Optimum reading width */
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease, text-decoration-color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        li { 
+            margin-bottom: var(--spacing-sm); 
+        }
+
+        /* Code & Preformatted Text */
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-std);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+        }
+        
+        p > code {
+            background-color: rgba(98, 0, 234, 0.1);
+            color: var(--primary-color);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* =========================================
+           3. LAYOUT UTILITIES
+           ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            gap: var(--spacing-lg);
+            width: 100%;
+        }
+
+        .grid-2 { 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        }
+        
+        .grid-3 { 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        }
+
+        /* Flex Utilities */
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flex-between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* =========================================
+           4. COMPONENT: NAVIGATION BAR
+           ========================================= */
+        header {
+            background-color: var(--bg-header);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: var(--spacing-md) 0;
+            transition: background-color 0.3s;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo svg {
+            stroke-width: 2.5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        
+        [data-theme="dark"] .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Mobile Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Mobile Navigation Responsive Logic */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px; /* Header Height */
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--bg-card);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* =========================================
+           5. COMPONENT: HERO SECTION
+           ========================================= */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 100px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Abstract Background Shape */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            animation: rotate 60s linear infinite;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xl);
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #000;
+            padding: 14px 35px;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-decoration: none;
+            background-color: #00bfa5;
+        }
+
+        /* =========================================
+           6. COMPONENT: CARDS & CONTENT BOXES
+           ========================================= */
+        .card {
+            background-color: var(--bg-card);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-std);
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(98, 0, 234, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+            transition: background-color 0.3s;
+        }
+        
+        .card:hover .icon-box {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        /* Tables inside cards */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--spacing-lg);
+            background-color: var(--bg-card);
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(98, 0, 234, 0.05);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =========================================
+           7. COMPONENT: MQTT SIMULATOR UI
+           ========================================= */
+        .simulator-container {
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            font-family: var(--font-mono);
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #444;
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .sim-status {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--error);
+            margin-right: 8px;
+            box-shadow: 0 0 5px var(--error);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .sim-status.connected { 
+            background-color: var(--success); 
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .sim-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .sim-panel { grid-template-columns: 1fr; }
+        }
+
+        .sim-control {
+            background-color: #2d2d2d;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-std);
+            border: 1px solid #444;
+        }
+
+        .sim-input-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .sim-label {
+            display: block;
+            margin-bottom: 6px;
+            color: #aaa;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+        }
+
+        .sim-input {
+            width: 100%;
+            padding: 10px;
+            background-color: #121212;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            transition: border-color 0.2s;
+        }
+        
+        .sim-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+        }
+        
+        .sim-input:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Simulator Buttons */
+        .sim-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: filter 0.2s, transform 0.1s;
+            margin-top: 5px;
+        }
+        
+        .sim-btn:active {
+            transform: scale(0.98);
+        }
+
+        .sim-btn-connect { 
+            background-color: var(--secondary-color); 
+            color: #000; 
+        }
+        
+        .sim-btn-disconnect {
+            background-color: var(--error);
+            color: #fff;
+        }
+        
+        .sim-btn-pub { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+        }
+        
+        .sim-btn-sub { 
+            background-color: #fb8c00; 
+            color: #000; 
+        }
+        
+        .sim-btn:hover { filter: brightness(1.1); }
+        .sim-btn:disabled { filter: grayscale(1); opacity: 0.4; cursor: not-allowed; }
+
+        /* Log Window */
+        .sim-log {
+            grid-column: 1 / -1;
+            background-color: #000;
+            height: 250px;
+            overflow-y: auto;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-std);
+            border: 1px solid #444;
+            margin-top: var(--spacing-sm);
+            font-size: 0.85rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Scrollbar for Log */
+        .sim-log::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sim-log::-webkit-scrollbar-track {
+            background: #111;
+        }
+        .sim-log::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .log-entry {
+            margin-bottom: 6px;
+            border-left: 3px solid transparent;
+            padding-left: 10px;
+            word-wrap: break-word;
+            animation: fadeInLog 0.3s ease-out;
+        }
+        
+        @keyframes fadeInLog {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .log-info { color: #81d4fa; border-color: #81d4fa; }
+        .log-success { color: #a5d6a7; border-color: #a5d6a7; }
+        .log-error { color: #ef9a9a; border-color: #ef9a9a; }
+        .log-msg { color: #fff59d; border-color: #fff59d; background: rgba(255, 245, 157, 0.05); }
+
+        /* =========================================
+           8. COMPONENT: ACCORDION FAQ
+           ========================================= */
+        .accordion {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-std);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background: var(--bg-card);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(98, 0, 234, 0.03);
+        }
+        
+        .accordion-header[aria-expanded="true"] {
+            background-color: rgba(98, 0, 234, 0.05);
+            color: var(--primary-color);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: var(--bg-card);
+        }
+
+        .accordion-content p {
+            padding: 0 20px 20px 20px;
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* =========================================
+           9. FOOTER
+           ========================================= */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 80px 0 20px;
+            margin-top: 60px;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.2s, padding-left 0.2s;
+            display: inline-block;
+        }
+
+        .footer-links li a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: #777;
+        }
+        
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* =========================================
+           10. ANIMATIONS
+           ========================================= */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* Helper class for focus accessibility */
+        :focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        HEADER / NAVIGATION 
+        Contains the brand logo and responsive menu links.
+    -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- Updated Logo Text as requested -->
+            <a href="https://mqtt.mqttwebs.com" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                MQTT
+            </a>
+            
+            <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#basics">Basics</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#simulator">Simulator</a></li>
+                <li><a href="#qos">QoS</a></li>
+                <li><a href="#code">Code</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 
+        HERO SECTION
+        Introduction and Call to Action.
+    -->
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <h1>The Standard for IoT Messaging</h1>
+            <p>Master the MQTT protocol. Lightweight, efficient, and reliable messaging for the Internet of Things. Built for unstable networks and low-bandwidth environments.</p>
+            <a href="#simulator" class="cta-button">Launch Simulator</a>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 1: BASICS
+        Explanation of the protocol.
+    -->
+    <section id="basics" class="section">
+        <div class="container">
+            <h2>What is MQTT?</h2>
+            <div class="grid grid-2">
+                <div>
+                    <p><strong>MQTT</strong> (Message Queuing Telemetry Transport) is an OASIS standard messaging protocol for the Internet of Things (IoT). It is designed as an extremely lightweight publish/subscribe messaging transport that is ideal for connecting remote devices with a small code footprint and minimal network bandwidth.</p>
+                    <p>Initially developed by IBM in 1999 to monitor oil pipelines over satellite connections, it has now become the de-facto standard for IoT due to its efficiency and reliability over unstable networks.</p>
+                    
+                    <h3>Why is it so popular?</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li>⚡ <strong>Lightweight:</strong> Smallest packet size is just 2 bytes, reducing network overhead.</li>
+                        <li>🛡️ <strong>Reliable:</strong> Offers 3 levels of Quality of Service (QoS) to ensure delivery.</li>
+                        <li>🔄 <strong>Bi-directional:</strong> Allows messaging between device-to-cloud and cloud-to-device.</li>
+                        <li>💾 <strong>Persistent:</strong> Retained messages allow new devices to immediately get the last known state.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Comparison: MQTT vs HTTP</h3>
+                    <p>While HTTP is the web standard, it is heavy and document-centric. MQTT is data-centric.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>MQTT</th>
+                                <th>HTTP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Design Model</td>
+                                <td>Pub/Sub</td>
+                                <td>Request/Response</td>
+                            </tr>
+                            <tr>
+                                <td>Header Size</td>
+                                <td>Min 2 Bytes</td>
+                                <td>Large (Text based)</td>
+                            </tr>
+                            <tr>
+                                <td>Connection</td>
+                                <td>Keep-Alive</td>
+                                <td>Open/Close</td>
+                            </tr>
+                            <tr>
+                                <td>Battery Usage</td>
+                                <td>Very Low</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>Distribution</td>
+                                <td>1-to-Many</td>
+                                <td>1-to-1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 2: ARCHITECTURE
+        Visual explanation of the Pub/Sub model.
+    -->
+    <section id="architecture" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2>Architecture & Components</h2>
+            <p>The MQTT protocol decouples the sender (publisher) and the receiver (subscriber) via a central component called the Broker.</p>
+            
+            <div class="grid grid-3">
+                <!-- Component 1: Broker -->
+                <div class="card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3>The Broker</h3>
+                    <p>The heart of the system. It receives all messages, filters them, decides who is interested in them based on subscriptions, and then publishes the message to all subscribed clients. Popular brokers include Mosquitto, HiveMQ, and EMQX.</p>
+                </div>
+
+                <!-- Component 2: Publisher -->
+                <div class="card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Publisher</h3>
+                    <p>A client that sends data (messages) to the broker on a specific topic. For example, a temperature sensor publishing data to <code>home/livingroom/temp</code>. Publishers do not need to know who subscribers are.</p>
+                </div>
+
+                <!-- Component 3: Subscriber -->
+                <div class="card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Subscriber</h3>
+                    <p>A client that registers interest in a specific topic. When the broker receives a message on that topic, it forwards it to the subscriber. A client can be both a publisher and subscriber.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <h3>Understanding Topics</h3>
+                <p>MQTT topics are hierarchical strings used to filter messages. They use a forward slash <code>/</code> as a delimiter. They are case-sensitive.</p>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>Topic Structure</h4>
+                        <p>A typical topic looks like this:</p>
+                        <code style="display:block; font-size: 1.1rem; padding:10px; text-align:center;">myhome / groundfloor / kitchen / temp</code>
+                        <p>This hierarchy allows specific addressing of devices.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Topic Wildcards</h4>
+                        <ul>
+                            <li><strong>Single Level (+):</strong> <br><code>home/+/temp</code> matches <code>home/kitchen/temp</code> but not <code>home/kitchen/fridge/temp</code>.</li>
+                            <li><strong>Multi Level (#):</strong> <br><code>home/#</code> matches everything starting with home, e.g., <code>home/kitchen/temp</code> and <code>home/garage/light/status</code>. This must be the last character in the topic.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 3: SIMULATOR
+        Interactive JS-based MQTT simulation.
+    -->
+    <section id="simulator" class="section">
+        <div class="container">
+            <h2>Web MQTT Simulator</h2>
+            <p>Experience how MQTT works right here in your browser. This simulator mimics the behavior of a broker and client locally using JavaScript logic.</p>
+            
+            <div class="simulator-container">
+                <div class="sim-header">
+                    <div class="flex-center" style="gap: 10px;">
+                        <span id="connection-status" class="sim-status"></span>
+                        <span id="status-text" style="font-weight: bold;">Disconnected</span>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #888; text-align: right;">
+                        Protocol: Virtual MQTT<br>
+                        Broker: mqtt.mqttwebs.com (Simulated)
+                    </div>
+                </div>
+
+                <div class="sim-panel">
+                    <!-- Column 1: Connection & Subscribe -->
+                    <div class="sim-control">
+                        <h4 style="color: #fff; border-bottom: 1px solid #555; padding-bottom: 10px; margin-bottom: 15px;">1. Connection & Subscription</h4>
+                        
+                        <div class="sim-input-group">
+                            <label class="sim-label">Client ID</label>
+                            <input type="text" id="clientId" class="sim-input" value="web-client-8392" readonly>
+                        </div>
+
+                        <div class="sim-input-group">
+                            <button id="btn-connect" class="sim-btn sim-btn-connect" onclick="simConnect()">Connect to Broker</button>
+                            <button id="btn-disconnect" class="sim-btn sim-btn-disconnect" onclick="simDisconnect()" disabled style="display: none;">Disconnect</button>
+                        </div>
+
+                        <hr style="border-color: #444; margin: 25px 0;">
+
+                        <div class="sim-input-group">
+                            <label class="sim-label">Subscribe to Topic</label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="text" id="sub-topic" class="sim-input" placeholder="e.g. sensors/temp">
+                                <button id="btn-sub" class="sim-btn sim-btn-sub" style="width: 100px; margin-top:0;" onclick="simSubscribe()" disabled>Sub</button>
+                            </div>
+                        </div>
+                        
+                        <div id="active-subs" style="margin-top: 15px; font-size: 0.85rem; background: #222; padding: 10px; border-radius: 4px;">
+                            <div style="color: #aaa; margin-bottom: 5px;">Active Subscriptions:</div>
+                            <ul id="subs-list" style="padding-left: 20px; color: #fb8c00; margin-bottom: 0;">
+                                <li style="color: #666; list-style: none; margin-left: -20px;">Not connected</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Publish -->
+                    <div class="sim-control">
+                        <h4 style="color: #fff; border-bottom: 1px solid #555; padding-bottom: 10px; margin-bottom: 15px;">2. Publish Message</h4>
+                        
+                        <div class="sim-input-group">
+                            <label class="sim-label">Target Topic</label>
+                            <input type="text" id="pub-topic" class="sim-input" placeholder="e.g. sensors/temp">
+                        </div>
+
+                        <div class="sim-input-group">
+                            <label class="sim-label">Message Payload (JSON/Text)</label>
+                            <textarea id="pub-payload" class="sim-input" rows="3" placeholder='{"value": 24.5, "unit": "C"}'></textarea>
+                        </div>
+
+                        <div class="sim-input-group">
+                            <label class="sim-label">QoS Level</label>
+                            <select id="pub-qos" class="sim-input">
+                                <option value="0">0 - At most once</option>
+                                <option value="1">1 - At least once</option>
+                                <option value="2">2 - Exactly once</option>
+                            </select>
+                        </div>
+
+                        <button id="btn-pub" class="sim-btn sim-btn-pub" onclick="simPublish()" disabled>Publish Packet</button>
+                    </div>
+
+                    <!-- Log Window -->
+                    <div class="sim-log" id="console-log">
+                        <div class="log-entry log-info">[System] Simulator initialized. Ready to connect.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 4: QOS EXPLAINED
+    -->
+    <section id="qos" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2>Quality of Service (QoS)</h2>
+            <p>MQTT provides three specific qualities of service for message delivery. This allows the designer to choose the right balance between overhead and reliability for specific messages.</p>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 900; color: #e0e0e0; position: absolute; top: 10px; right: 20px;">0</div>
+                    <h3>QoS 0</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 0.8rem;">At most once</p>
+                    <p>Also known as "Fire and forget". The message is sent once. No confirmation is expected. If the connection drops or the server is busy, the message is lost forever.</p>
+                    <p style="font-size: 0.9rem; margin-top: auto;"><em>Use case: Periodic temperature sensor data where missing one reading out of a hundred isn't critical.</em></p>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 900; color: #e0e0e0; position: absolute; top: 10px; right: 20px;">1</div>
+                    <h3>QoS 1</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 0.8rem;">At least once</p>
+                    <p>Guarantees that a message will be delivered at least once to the receiver. The sender stores the message until it gets a <code>PUBACK</code> packet. Duplicates may occur if the ack is lost.</p>
+                    <p style="font-size: 0.9rem; margin-top: auto;"><em>Use case: Turning on a light switch. You definitely want it to turn on, and doing it twice is acceptable.</em></p>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 900; color: #e0e0e0; position: absolute; top: 10px; right: 20px;">2</div>
+                    <h3>QoS 2</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 0.8rem;">Exactly once</p>
+                    <p>The safest and slowest level. Guarantees that the message is received exactly once by using a four-step handshake. This prevents duplicates.</p>
+                    <p style="font-size: 0.9rem; margin-top: auto;"><em>Use case: Banking transactions, billing systems, or critical alarms where duplicates cause errors.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 5: CODE EXAMPLES
+    -->
+    <section id="code" class="section">
+        <div class="container">
+            <h2>Implementation Examples</h2>
+            <p>MQTT has client libraries available for almost every programming language (C, C++, Java, Python, Go, JavaScript, etc.).</p>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Python (Paho-MQTT)</h3>
+                    <p>The standard library for Python IoT apps.</p>
+                    <pre><code>import paho.mqtt.client as mqtt
+
+# Callback when connected
+def on_connect(client, userdata, flags, rc):
+    print(f"Connected with result code {rc}")
+    # Subscribing in on_connect ensures 
+    # we resubscribe if we lose connection
+    client.subscribe("home/sensors/#")
+
+# Callback when message received
+def on_message(client, userdata, msg):
+    print(f"{msg.topic}: {msg.payload.decode()}")
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect("broker.hivemq.com", 1883, 60)
+client.loop_forever()</code></pre>
+                </div>
+
+                <div class="card">
+                    <h3>JavaScript (Node.js)</h3>
+                    <p>Using the MQTT.js library for async operations.</p>
+                    <pre><code>const mqtt = require('mqtt')
+// Connect to a public test broker
+const client  = mqtt.connect('mqtt://test.mosquitto.org')
+
+client.on('connect', function () {
+  console.log("Connected!")
+  
+  // Subscribe to presence topic
+  client.subscribe('presence', function (err) {
+    if (!err) {
+      // Publish a message
+      client.publish('presence', 'Hello mqtt')
+    }
+  })
+})
+
+client.on('message', function (topic, message) {
+  // message is a Buffer
+  console.log(message.toString())
+  client.end() // Close connection
+})</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 6: FAQ ACCORDION
+    -->
+    <section id="faq" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        Is MQTT secure?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>By default, MQTT sends data in plain text, which is not secure. However, production implementations typically use TLS/SSL to encrypt the connection (MQTTS), typically on port 8883. Additionally, username/password authentication and Client Certificates can be used to authorize devices at the broker level.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        What is a Retained Message?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A retained message is a normal MQTT message with the "retained" flag set to true. The broker stores the last retained message for that topic. When a new client subscribes to that topic, it immediately receives the retained message. It's useful for "status" updates (e.g., providing the last known temperature to a device that just woke up).</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        What is the Last Will and Testament (LWT)?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>LWT is a feature where a client specifies a message to be published by the broker automatically if the client disconnects ungracefully (e.g., battery dies, network failure). It allows other clients to know that a device has gone offline unexpectedly.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        What port does MQTT use?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Standard MQTT uses TCP port 1883. MQTT over SSL/TLS uses port 8883. MQTT over WebSockets usually uses port 80 or 443 (if secure), or custom ports like 9001 depending on the broker configuration.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        What is a Clean Session?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>When a client connects with "Clean Session = false", the broker creates a persistent session. It saves all subscriptions and queues QoS 1 and 2 messages for the client while it is offline. When the client reconnects, it receives all missed messages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        FOOTER
+    -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <!-- Updated Footer Branding -->
+                    <h4>About MQTT</h4>
+                    <p>We provide the most comprehensive documentation and tools for developers building IoT solutions using the MQTT protocol. Our mission is to make IoT connectivity accessible to everyone.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://mqtt.org/documentation/" target="_blank" rel="noopener">Official Documentation</a></li>
+                        <li><a href="https://mosquitto.org/" target="_blank" rel="noopener">Mosquitto Broker</a></li>
+                        <li><a href="https://www.hivemq.com/mqtt/" target="_blank" rel="noopener">HiveMQ Essentials</a></li>
+                        <li><a href="https://github.com/mqttjs/MQTT.js" target="_blank" rel="noopener">MQTT.js Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Site Map</h4>
+                    <ul class="footer-links">
+                        <li><a href="#basics">Basics</a></li>
+                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#simulator">Simulator</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <!-- Retaining Company Name for Copyright as per instructions -->
+                <p>&copy; 2026 MQTTWebs. All rights reserved.</p>
+                <p><small>This site is for educational purposes. MQTT is a trademark of OASIS.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+        JAVASCRIPT LOGIC
+        Handles UI interactions, Dark Mode, and the MQTT Simulator Logic.
+        No external dependencies.
+    -->
+    <script>
+        /**
+         * =========================================
+         * 1. UI LOGIC: MOBILE MENU & THEME
+         * =========================================
+         */
+        
+        // Mobile Navigation Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', toggleMenu);
+
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            
+            // Animate hamburger lines
+            const spans = hamburger.querySelectorAll('span');
+            if (isExpanded) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Dark Mode Logic
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('svg');
+
+        // Check local storage or system preference
+        const savedTheme = localStorage.getItem('mqtt-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            enableDarkMode();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+
+        function enableDarkMode() {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('mqtt-theme', 'dark');
+            // Change icon to Moon
+            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+        }
+
+        function disableDarkMode() {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('mqtt-theme', 'light');
+            // Change icon to Sun
+            icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+        }
+
+        // Accordion Logic
+        const accHeaders = document.querySelectorAll('.accordion-header');
+        accHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                // Close all others
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.accordion-content').style.maxHeight = null;
+                    i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        /**
+         * =========================================
+         * 2. MQTT SIMULATOR LOGIC
+         * =========================================
+         * Simulates a broker and client interaction locally.
+         */
+        
+        // State
+        let isConnected = false;
+        let subscriptions = [];
+        const consoleLog = document.getElementById('console-log');
+        
+        // DOM Elements
+        const btnConnect = document.getElementById('btn-connect');
+        const btnDisconnect = document.getElementById('btn-disconnect');
+        const btnSub = document.getElementById('btn-sub');
+        const btnPub = document.getElementById('btn-pub');
+        const statusDot = document.getElementById('connection-status');
+        const statusText = document.getElementById('status-text');
+        const subsList = document.getElementById('subs-list');
+        const clientIdInput = document.getElementById('clientId');
+
+        // Initialize: Random Client ID generator
+        clientIdInput.value = 'web-client-' + Math.floor(Math.random() * 100000).toString(16);
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `log-entry log-${type}`;
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+            div.innerHTML = `<span style="opacity:0.6;">[${time}]</span> ${message}`;
+            consoleLog.appendChild(div);
+            // Auto scroll to bottom
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+        }
+
+        function simConnect() {
+            log('Initiating connection to broker.mqttwebs.com...', 'info');
+            btnConnect.disabled = true;
+            btnConnect.textContent = 'Connecting...';
+
+            // Simulate network handshake latency
+            setTimeout(() => {
+                isConnected = true;
+                statusDot.classList.add('connected');
+                statusText.textContent = 'Connected';
+                statusText.style.color = 'var(--success)';
+                
+                // Toggle Buttons
+                btnConnect.style.display = 'none';
+                btnDisconnect.style.display = 'inline-block';
+                btnDisconnect.disabled = false;
+                
+                btnSub.disabled = false;
+                btnPub.disabled = false;
+                
+                // Update Subs UI
+                renderSubs();
+                
+                log('CONNACK received (RC: 0). Connection accepted.', 'success');
+                log('Secure session established.', 'info');
+            }, 1200);
+        }
+
+        function simDisconnect() {
+            log('Sending DISCONNECT packet...', 'info');
+            
+            setTimeout(() => {
+                isConnected = false;
+                subscriptions = []; // Clean session simulation
+                renderSubs();
+                
+                statusDot.classList.remove('connected');
+                statusText.textContent = 'Disconnected';
+                statusText.style.color = '#fff';
+                
+                // Toggle Buttons
+                btnConnect.style.display = 'inline-block';
+                btnConnect.textContent = 'Connect to Broker';
+                btnConnect.disabled = false;
+                
+                btnDisconnect.style.display = 'none';
+                
+                btnSub.disabled = true;
+                btnPub.disabled = true;
+                
+                log('Client disconnected gracefully.', 'error');
+            }, 500);
+        }
+
+        function simSubscribe() {
+            const topicInput = document.getElementById('sub-topic');
+            const topic = topicInput.value.trim();
+            
+            if (!topic) {
+                log('Error: Topic cannot be empty.', 'error');
+                topicInput.focus();
+                return;
+            }
+
+            if (topic.includes(' ')) {
+                 log('Error: Topics cannot contain spaces.', 'error');
+                 return;
+            }
+
+            if (subscriptions.includes(topic)) {
+                log(`Warning: Already subscribed to ${topic}`, 'warning');
+                return;
+            }
+
+            log(`Sending SUBSCRIBE packet [Topic: ${topic}, QoS: 1]`, 'info');
+            
+            // Disable button briefly
+            btnSub.disabled = true;
+            
+            setTimeout(() => {
+                log(`SUBACK received. Subscribed to ${topic}`, 'success');
+                subscriptions.push(topic);
+                renderSubs();
+                topicInput.value = '';
+                btnSub.disabled = false;
+            }, 400);
+        }
+
+        function renderSubs() {
+            subsList.innerHTML = '';
+            
+            if (!isConnected) {
+                subsList.innerHTML = '<li style="color: #666; list-style: none; margin-left: -20px;">Not connected</li>';
+                return;
+            }
+
+            if (subscriptions.length === 0) {
+                subsList.innerHTML = '<li style="color: #aaa; list-style: none; margin-left: -20px;">No active subscriptions</li>';
+                return;
+            }
+            
+            subscriptions.forEach(sub => {
+                const li = document.createElement('li');
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+                li.style.marginBottom = '5px';
+                
+                const textSpan = document.createElement('span');
+                textSpan.textContent = sub;
+                
+                // Add unsubscribe button (X)
+                const delBtn = document.createElement('button');
+                delBtn.textContent = '✕';
+                delBtn.title = 'Unsubscribe';
+                delBtn.style.background = 'none';
+                delBtn.style.border = 'none';
+                delBtn.style.color = '#ef9a9a';
+                delBtn.style.cursor = 'pointer';
+                delBtn.style.padding = '0 5px';
+                
+                delBtn.onclick = () => {
+                    log(`Unsubscribing from ${sub}...`, 'info');
+                    subscriptions = subscriptions.filter(s => s !== sub);
+                    log(`UNSUBACK received.`, 'success');
+                    renderSubs();
+                };
+                
+                li.appendChild(textSpan);
+                li.appendChild(delBtn);
+                subsList.appendChild(li);
+            });
+        }
+
+        function simPublish() {
+            const topicInput = document.getElementById('pub-topic');
+            const payloadInput = document.getElementById('pub-payload');
+            const qosSelect = document.getElementById('pub-qos');
+
+            const topic = topicInput.value.trim();
+            const payload = payloadInput.value.trim();
+            const qos = qosSelect.value;
+
+            if (!topic) {
+                log('Error: Publish Topic is required.', 'error');
+                topicInput.focus();
+                return;
+            }
+            
+            if (!payload) {
+                log('Error: Message Payload is required.', 'error');
+                payloadInput.focus();
+                return;
+            }
+
+            log(`Publishing to [${topic}] QoS:${qos} | Size: ${payload.length}b`, 'info');
+
+            // Simulate Publish Latency based on QoS
+            const delay = 300 * (parseInt(qos) + 1);
+
+            setTimeout(() => {
+                if (qos === '1') log('PUBACK received (QoS 1).', 'success');
+                if (qos === '2') log('PUBREC -> PUBREL -> PUBCOMP received (QoS 2).', 'success');
+                
+                // SIMULATION LOGIC: Loopback
+                // If we are subscribed to this topic (or a matching wildcard), echo the message back
+                checkSubscriptionsAndEcho(topic, payload);
+
+            }, delay);
+        }
+
+        function checkSubscriptionsAndEcho(topic, payload) {
+            let match = false;
+            let matchSub = '';
+            
+            subscriptions.forEach(sub => {
+                if (mqttMatch(sub, topic)) {
+                    match = true;
+                    matchSub = sub;
+                }
+            });
+
+            if (match) {
+                setTimeout(() => {
+                    log(`INCOMING MSG [${topic}]: ${payload}`, 'msg');
+                    // Add a small visual flash to the log to indicate arrival
+                    const lastLog = consoleLog.lastChild;
+                    lastLog.style.borderLeft = '4px solid #fff59d';
+                }, 200);
+            }
+        }
+
+        // MQTT Topic Matching Logic (Wildcards + and #)
+        function mqttMatch(filter, topic) {
+            if (filter === '#' || filter === topic) return true;
+            
+            const filterParts = filter.split('/');
+            const topicParts = topic.split('/');
+
+            for (let i = 0; i < filterParts.length; ++i) {
+                const left = filterParts[i];
+                const right = topicParts[i];
+
+                if (left === '#') return topicParts.length >= i;
+                if (left !== '+' && left !== right) return false;
+            }
+
+            return filterParts.length === topicParts.length;
+        }
+        
+        // Helper: Adjust CSS Variable for VH on mobile
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        window.addEventListener('resize', setVH);
+        setVH();
+
+        // Initial Hint
+        setTimeout(() => {
+            if(!isConnected) {
+                log('Tip: Click "Connect" to start the simulator.', 'warning');
+            }
+        }, 1500);
+
+    </script>
+</body>
+</html>
