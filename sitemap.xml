@@ -5,71 +5,397 @@
    <!-- Main Homepage (English / Default) -->
    <url>
       <loc>https://mqtt.mqttwebs.com/</loc>
-      <lastmod>2026-03-13</lastmod>
+      <lastmod>2026-03-14</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
-      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
       <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
       <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
       <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
    </url>
 
-   <!-- Polish Homepage -->
+   <!-- Bulgarian Homepage -->
    <url>
-      <loc>https://mqtt.mqttwebs.com/polish.html</loc>
-      <lastmod>2026-03-13</lastmod>
+      <loc>https://mqtt.mqttwebs.com/bulgarian.html</loc>
+      <lastmod>2026-03-14</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
       <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
-      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
       <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
       <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
       <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Chinese Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/chinese.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
    </url>
 
    <!-- German Homepage -->
    <url>
       <loc>https://mqtt.mqttwebs.com/de.html</loc>
-      <lastmod>2026-03-13</lastmod>
+      <lastmod>2026-03-14</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
       <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
-      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
       <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
       <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
       <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- French Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/french.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Hungarian Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/hungrian.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
    </url>
 
    <!-- Italian Homepage -->
    <url>
       <loc>https://mqtt.mqttwebs.com/italian.html</loc>
-      <lastmod>2026-03-13</lastmod>
+      <lastmod>2026-03-14</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
       <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
-      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
       <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
       <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
       <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Japanese Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/japanese.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Latvian Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/latvian.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Lithuanian Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/lithuanian.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Polish Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/polish.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Portuguese Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/portuguese.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Russian Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/russian.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
    </url>
 
    <!-- Spanish Homepage -->
    <url>
       <loc>https://mqtt.mqttwebs.com/spanish.html</loc>
-      <lastmod>2026-03-13</lastmod>
+      <lastmod>2026-03-14</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
       <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
-      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
       <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
       <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
       <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
    </url>
 
-</urlset>
+   <!-- Turkish Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/turkish.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtml:link rel="alternate" hreflang="uk" href="https://mqtt.mqttwebs.com/ukrainian.html" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://mqtt.mqttwebs.com/" />
+   </url>
+
+   <!-- Ukrainian Homepage -->
+   <url>
+      <loc>https://mqtt.mqttwebs.com/ukrainian.html</loc>
+      <lastmod>2026-03-14</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://mqtt.mqttwebs.com/" />
+      <xhtml:link rel="alternate" hreflang="bg" href="https://mqtt.mqttwebs.com/bulgarian.html" />
+      <xhtml:link rel="alternate" hreflang="zh" href="https://mqtt.mqttwebs.com/chinese.html" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://mqtt.mqttwebs.com/de.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://mqtt.mqttwebs.com/french.html" />
+      <xhtml:link rel="alternate" hreflang="hu" href="https://mqtt.mqttwebs.com/hungrian.html" />
+      <xhtml:link rel="alternate" hreflang="it" href="https://mqtt.mqttwebs.com/italian.html" />
+      <xhtml:link rel="alternate" hreflang="ja" href="https://mqtt.mqttwebs.com/japanese.html" />
+      <xhtml:link rel="alternate" hreflang="lv" href="https://mqtt.mqttwebs.com/latvian.html" />
+      <xhtml:link rel="alternate" hreflang="lt" href="https://mqtt.mqttwebs.com/lithuanian.html" />
+      <xhtml:link rel="alternate" hreflang="pl" href="https://mqtt.mqttwebs.com/polish.html" />
+      <xhtml:link rel="alternate" hreflang="pt" href="https://mqtt.mqttwebs.com/portuguese.html" />
+      <xhtml:link rel="alternate" hreflang="ru" href="https://mqtt.mqttwebs.com/russian.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://mqtt.mqttwebs.com/spanish.html" />
+      <xhtml:link rel="alternate" hreflang="tr" href="https://mqtt.mqttwebs.com/turkish.html" />
+      <xhtm
