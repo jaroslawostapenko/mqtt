@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- 
+        SEO & META INFORMATION
+        Optimized for high indexing speed and relevance for MQTT keywords.
+    -->
+    <title>MQTT-protokollet: Den ultimata guiden och onlinesimulatorn | MQTT</title>
+    <meta name="description" content="Omfattande guide till MQTT-protokollet. Lär dig om Pub/Sub, Brokers, QoS och simulera MQTT-meddelanden direkt i din mobil- eller skrivbordswebbläsare.">
+    <meta name="keywords" content="MQTT, IoT, Internet of Things, Protokoll, Pub Sub, Mäklare, Broker, QoS, Mosquitto, HiveMQ, WebSocket, Mobiloptimering, Mqttwebs">
+    <meta name="author" content="MQTTWebs">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3700b3">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mqtt.mqttwebs.com/swedish.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mqtt.mqttwebs.com/swedish.html">
+    <meta property="og:title" content="MQTT-protokollet: Den ultimata guiden och onlinesimulatorn">
+    <meta property="og:description" content="Bemästra MQTT-protokollet med vår djupgående dokumentation och interaktiva simulator i realtid. Perfekt för mobil och desktop.">
+    <meta property="og:image" content="https://mqtt.mqttwebs.com/assets/og-image.jpg">
+    <meta property="og:site_name" content="MQTT">
+
+    <!-- Twitter Card Data -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mqtt.mqttwebs.com/swedish.html">
+    <meta property="twitter:title" content="Guide och simulator för MQTT-protokollet">
+    <meta property="twitter:description" content="Lär dig MQTT-arkitektur, QoS-nivåer och säkerhet. Prova vår JS-baserade MQTT-simulator.">
+
+    <!-- 
+        STRUCTURED DATA (JSON-LD) 
+        Helping Google understand the content immediately.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Allt du behöver veta om MQTT",
+      "alternativeHeadline": "Standarden för IoT-meddelanden",
+      "image":[
+        "https://mqtt.mqttwebs.com/assets/mqtt-banner.jpg"
+       ],
+      "datePublished": "2023-10-27T08:00:00+08:00",
+      "dateModified": "2026-01-11T09:20:00+08:00",
+      "author": {
+        "@type": "Organization",
+        "name": "MQTTWebs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MQTTWebs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mqtt.mqttwebs.com/logo.png"
+        }
+      },
+      "description": "En teknisk djupdykning i Message Queuing Telemetry Transport (MQTT) med en interaktiv simulator."
+    }
+    </script>
+
+    <!-- 
+        CSS STYLES
+        Contains Reset, Variables, Typography, Layout, Components, and Animations.
+        Fully responsive and dark-mode ready.
+    -->
+    <style>
+        /* =========================================
+           1. ROOT VARIABLES & THEME CONFIGURATION
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --primary-color: #6200ea;
+            --primary-light: #9d46ff;
+            --primary-dark: #0a00b6;
+            --secondary-color: #03dac6;
+            
+            /* Typography Colors */
+            --text-main: #121212;
+            --text-secondary: #555555;
+            
+            /* Background Colors */
+            --bg-body: #f9f9f9;
+            --bg-card: #ffffff;
+            --bg-header: #ffffff;
+            
+            /* UI Elements */
+            --border-color: #e0e0e0;
+            --code-bg: #2d2d2d;
+            --code-text: #f8f8f2;
+            
+            /* Status Colors */
+            --success: #00c853;
+            --error: #d50000;
+            --warning: #ffd600;
+            --info: #29b6f6;
+            
+            /* Spacing Scale */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            
+            /* Font Stacks */
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            
+            /* Shadows & Effects */
+            --shadow-card: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 15px rgba(0,0,0,0.15);
+            --radius-std: 8px;
+            --radius-lg: 16px;
+            --radius-pill: 50px;
+        }
+
+        /* Dark Mode Overrides */[data-theme="dark"] {
+            --text-main: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-header: #1e1e1e;
+            --border-color: #333333;
+            --shadow-card: 0 4px 6px rgba(0,0,0,0.5);
+            --shadow-hover: 0 10px 20px rgba(0,0,0,0.6);
+        }
+
+        /* =========================================
+           2. RESET & GLOBAL STYLES
+           ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-main);
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+        }
+        
+        h2 { 
+            font-size: 2rem; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 10px; 
+            display: inline-block; 
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        h3 { 
+            font-size: 1.5rem; 
+            margin-top: var(--spacing-md);
+        }
+
+        /* Text Elements */
+        p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 75ch; /* Optimum reading width */
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease, text-decoration-color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        li { 
+            margin-bottom: var(--spacing-sm); 
+        }
+
+        /* Code & Preformatted Text */
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-std);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+        }
+        
+        p > code {
+            background-color: rgba(98, 0, 234, 0.1);
+            color: var(--primary-color);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* =========================================
+           3. LAYOUT UTILITIES
+           ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            gap: var(--spacing-lg);
+            width: 100%;
+        }
+
+        .grid-2 { 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        }
+        
+        .grid-3 { 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        }
+
+        /* Flex Utilities */
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flex-between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* =========================================
+           4. COMPONENT: NAVIGATION BAR
+           ========================================= */
+        header {
+            background-color: var(--bg-header);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: var(--spacing-md) 0;
+            transition: background-color 0.3s;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo svg {
+            stroke-width: 2.5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        
+        [data-theme="dark"] .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Mobile Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Mobile Navigation Responsive Logic */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px; /* Header Height */
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--bg-card);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* =========================================
+           5. COMPONENT: HERO SECTION
+           ========================================= */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 100px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Abstract Background Shape */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            animation: rotate 60s linear infinite;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xl);
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #000;
+            padding: 14px 35px;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-decoration: none;
+            background-color: #00bfa5;
+        }
+
+        /* =========================================
+           6. COMPONENT: CARDS & CONTENT BOXES
+           ========================================= */
+        .card {
+            background-color: var(--bg-card);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-std);
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(98, 0, 234, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+            transition: background-color 0.3s;
+        }
+        
+        .card:hover .icon-box {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        /* Tables inside cards */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--spacing-lg);
+            background-color: var(--bg-card);
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(98, 0, 234, 0.05);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =========================================
+           7. COMPONENT: MQTT SIMULATOR UI
+           ========================================= */
+        .simulator-container {
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            font-family: var(--font-mono);
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #444;
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .sim-status {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--error);
+            margin-right: 8px;
+            box-shadow: 0 0 5px var(--error);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .sim-status.connected { 
+            background-color: var(--success); 
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .sim-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .sim-panel { grid-template-columns: 1fr; }
+        }
+
+        .sim-control {
+            background-color: #2d2d2d;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-std);
+            border: 1px solid #444;
+        }
+
+        .sim-input-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .sim-label {
+            display: block;
+            margin-bottom: 6px;
+            color: #aaa;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+        }
+
+        .sim-input {
+            width: 100%;
+            padding: 10px;
+            background-color: #121212;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            transition: border-color 0.2s;
+        }
+        
+        .sim-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+        }
+        
+        .sim-input:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Simulator Buttons */
+        .sim-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: filter 0.2s, transform 0.1s;
+            margin-top: 5px;
+        }
+        
+        .sim-btn:active {
+            transform: scale(0.98);
+        }
+
+        .sim-btn-connect { 
+            background-color: var(--secondary-color); 
+            color: #000; 
+        }
+        
+        .sim-btn-disconnect {
+            background-color: var(--error);
+            color: #fff;
+        }
+        
+        .sim-btn-pub { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+        }
+        
+        .sim-btn-sub { 
+            background-color: #fb8c00; 
+            color: #000; 
+        }
+        
+        .sim-btn:hover { filter: brightness(1.1); }
+        .sim-btn:disabled { filter: grayscale(1); opacity: 0.4; cursor: not-allowed; }
+
+        /* Log Window */
+        .sim-log {
+            grid-column: 1 / -1;
+            background-color: #000;
+            height: 250px;
+            overflow-y: auto;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-std);
+            border: 1px solid #444;
+            margin-top: var(--spacing-sm);
+            font-size: 0.85rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Scrollbar for Log */
+        .sim-log::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sim-log::-webkit-scrollbar-track {
+            background: #111;
+        }
+        .sim-log::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .log-entry {
+            margin-bottom: 6px;
+            border-left: 3px solid transparent;
+            padding-left: 10px;
+            word-wrap: break-word;
+            animation: fadeInLog 0.3s ease-out;
+        }
+        
+        @keyframes fadeInLog {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .log-info { color: #81d4fa; border-color: #81d4fa; }
+        .log-success { color: #a5d6a7; border-color: #a5d6a7; }
+        .log-error { color: #ef9a9a; border-color: #ef9a9a; }
+        .log-msg { color: #fff59d; border-color: #fff59d; background: rgba(255, 245, 157, 0.05); }
+
+        /* =========================================
+           8. COMPONENT: ACCORDION FAQ
+           ========================================= */
+        .accordion {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-std);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background: var(--bg-card);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(98, 0, 234, 0.03);
+        }
+        
+        .accordion-header[aria-expanded="true"] {
+            background-color: rgba(98, 0, 234, 0.05);
+            color: var(--primary-color);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: var(--bg-card);
+        }
+
+        .accordion-content p {
+            padding: 0 20px 20px 20px;
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* =========================================
+           9. FOOTER
+           ========================================= */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 80px 0 20px;
+            margin-top: 60px;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            transition: color 0.2s, padding-left 0.2s;
+            display: inline-block;
+        }
+
+        .footer-links li a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: #777;
+        }
+        
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* =========================================
+           10. ANIMATIONS
+           ========================================= */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* Helper class for focus accessibility */
+        :focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        HEADER / NAVIGATION 
+        Contains the brand logo and responsive menu links.
+    -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- Updated Logo Text as requested -->
+            <a href="https://mqtt.mqttwebs.com/swedish.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                MQTT
+            </a>
+            
+            <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#basics">Grunderna</a></li>
+                <li><a href="#architecture">Arkitektur</a></li>
+                <li><a href="#simulator">Simulator</a></li>
+                <li><a href="#qos">QoS</a></li>
+                <li><a href="#code">Kod</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 
+        HERO SECTION
+        Introduction and Call to Action.
+    -->
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <h1>Standarden för IoT-meddelanden</h1>
+            <p>Bemästra MQTT-protokollet. Lättviktigt, effektivt och pålitligt meddelandesystem för Internet of Things. Byggt för instabila nätverk och miljöer med låg bandbredd.</p>
+            <a href="#simulator" class="cta-button">Starta simulator</a>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 1: BASICS
+        Explanation of the protocol.
+    -->
+    <section id="basics" class="section">
+        <div class="container">
+            <h2>Vad är MQTT?</h2>
+            <div class="grid grid-2">
+                <div>
+                    <p><strong>MQTT</strong> (Message Queuing Telemetry Transport) är ett standardiserat meddelandeprotokoll (OASIS) för Internet of Things (IoT). Det är utformat som en extremt lättviktig publish/subscribe-meddelandetransport (publicera/prenumerera) som är idealisk för att ansluta fjärrenheter med en liten kodbas och minimal nätverksbandbredd.</p>
+                    <p>Det utvecklades ursprungligen av IBM 1999 för att övervaka oljepipelines via satellitanslutningar, och har nu blivit de-facto-standarden för IoT på grund av dess effektivitet och tillförlitlighet över instabila nätverk.</p>
+                    
+                    <h3>Varför är det så populärt?</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li>⚡ <strong>Lättviktigt:</strong> Den minsta paketstorleken är bara 2 byte, vilket minskar nätverksbelastningen.</li>
+                        <li>🛡️ <strong>Pålitligt:</strong> Erbjuder 3 nivåer av Quality of Service (QoS) för att säkerställa leverans.</li>
+                        <li>🔄 <strong>Dubbelriktat:</strong> Möjliggör meddelanden mellan enhet-till-moln och moln-till-enhet.</li>
+                        <li>💾 <strong>Varaktigt:</strong> Kvarhållna meddelanden (Retained) gör att nya enheter omedelbart kan få det senast kända tillståndet.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Jämförelse: MQTT vs HTTP</h3>
+                    <p>Medan HTTP är webbstandarden är det tungt och dokumentcentrerat. MQTT är datacentrerat.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Funktion</th>
+                                <th>MQTT</th>
+                                <th>HTTP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Designmodell</td>
+                                <td>Pub/Sub</td>
+                                <td>Begäran/Svar</td>
+                            </tr>
+                            <tr>
+                                <td>Headerstorlek</td>
+                                <td>Minst 2 byte</td>
+                                <td>Stor (Textbaserad)</td>
+                            </tr>
+                            <tr>
+                                <td>Anslutning</td>
+                                <td>Keep-Alive</td>
+                                <td>Öppna/Stäng</td>
+                            </tr>
+                            <tr>
+                                <td>Batterianvändning</td>
+                                <td>Mycket låg</td>
+                                <td>Hög</td>
+                            </tr>
+                            <tr>
+                                <td>Distribution</td>
+                                <td>1-till-många</td>
+                                <td>1-till-1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 2: ARCHITECTURE
+        Visual explanation of the Pub/Sub model.
+    -->
+    <section id="architecture" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2>Arkitektur och komponenter</h2>
+            <p>MQTT-protokollet frikopplar avsändaren (publicisten) och mottagaren (prenumeranten) via en central komponent som kallas mäklare (Broker).</p>
+            
+            <div class="grid grid-3">
+                <!-- Component 1: Broker -->
+                <div class="card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3>Mäklaren (Broker)</h3>
+                    <p>Hjärtat i systemet. Den tar emot alla meddelanden, filtrerar dem, bestämmer vem som är intresserad av dem baserat på prenumerationer och publicerar sedan meddelandet till alla prenumererande klienter. Populära mäklare inkluderar Mosquitto, HiveMQ och EMQX.</p>
+                </div>
+
+                <!-- Component 2: Publisher -->
+                <div class="card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Publicist (Publisher)</h3>
+                    <p>En klient som skickar data (meddelanden) till mäklaren på ett specifikt ämne (topic). Till exempel en temperatursensor som publicerar data till <code>home/livingroom/temp</code>. Publicister behöver inte veta vilka prenumeranterna är.</p>
+                </div>
+
+                <!-- Component 3: Subscriber -->
+                <div class="card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Prenumerant (Subscriber)</h3>
+                    <p>En klient som registrerar intresse för ett specifikt ämne. När mäklaren får ett meddelande om det ämnet vidarebefordrar den det till prenumeranten. En klient kan vara både publicist och prenumerant.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <h3>Förstå ämnen (Topics)</h3>
+                <p>MQTT-ämnen är hierarkiska strängar som används för att filtrera meddelanden. De använder ett snedstreck <code>/</code> som avgränsare. De är skiftlägeskänsliga.</p>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>Ämnesstruktur</h4>
+                        <p>Ett typiskt ämne ser ut så här:</p>
+                        <code style="display:block; font-size: 1.1rem; padding:10px; text-align:center;">myhome / groundfloor / kitchen / temp</code>
+                        <p>Denna hierarki möjliggör specifik adressering av enheter.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Jokertecken för ämnen (Wildcards)</h4>
+                        <ul>
+                            <li><strong>En nivå (+):</strong> <br><code>home/+/temp</code> matchar <code>home/kitchen/temp</code> men inte <code>home/kitchen/fridge/temp</code>.</li>
+                            <li><strong>Flera nivåer (#):</strong> <br><code>home/#</code> matchar allt som börjar med home, t.ex. <code>home/kitchen/temp</code> och <code>home/garage/light/status</code>. Detta måste vara det sista tecknet i ämnet.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 3: SIMULATOR
+        Interactive JS-based MQTT simulation.
+    -->
+    <section id="simulator" class="section">
+        <div class="container">
+            <h2>Webb-MQTT-simulator</h2>
+            <p>Upplev hur MQTT fungerar direkt här i din webbläsare. Denna simulator härmar beteendet hos en mäklare och klient lokalt med hjälp av JavaScript-logik.</p>
+            
+            <div class="simulator-container">
+                <div class="sim-header">
+                    <div class="flex-center" style="gap: 10px;">
+                        <span id="connection-status" class="sim-status"></span>
+                        <span id="status-text" style="font-weight: bold;">Frånkopplad</span>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #888; text-align: right;">
+                        Protokoll: Virtuell MQTT<br>
+                        Mäklare: mqtt.mqttwebs.com (Simulerad)
+                    </div>
+                </div>
+
+                <div class="sim-panel">
+                    <!-- Column 1: Connection & Subscribe -->
+                    <div class="sim-control">
+                        <h4 style="color: #fff; border-bottom: 1px solid #555; padding-bottom: 10px; margin-bottom: 15px;">1. Anslutning och prenumeration</h4>
+                        
+                        <div class="sim-input-group">
+                            <label class="sim-label">Klient-ID</label>
+                            <input type="text" id="clientId" class="sim-input" value="web-client-8392" readonly>
+                        </div>
+
+                        <div class="sim-input-group">
+                            <button id="btn-connect" class="sim-btn sim-btn-connect" onclick="simConnect()">Anslut till mäklare</button>
+                            <button id="btn-disconnect" class="sim-btn sim-btn-disconnect" onclick="simDisconnect()" disabled style="display: none;">Koppla från</button>
+                        </div>
+
+                        <hr style="border-color: #444; margin: 25px 0;">
+
+                        <div class="sim-input-group">
+                            <label class="sim-label">Prenumerera på ämne</label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="text" id="sub-topic" class="sim-input" placeholder="t.ex. sensors/temp">
+                                <button id="btn-sub" class="sim-btn sim-btn-sub" style="width: 100px; margin-top:0;" onclick="simSubscribe()" disabled>Pren</button>
+                            </div>
+                        </div>
+                        
+                        <div id="active-subs" style="margin-top: 15px; font-size: 0.85rem; background: #222; padding: 10px; border-radius: 4px;">
+                            <div style="color: #aaa; margin-bottom: 5px;">Aktiva prenumerationer:</div>
+                            <ul id="subs-list" style="padding-left: 20px; color: #fb8c00; margin-bottom: 0;">
+                                <li style="color: #666; list-style: none; margin-left: -20px;">Inte ansluten</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Publish -->
+                    <div class="sim-control">
+                        <h4 style="color: #fff; border-bottom: 1px solid #555; padding-bottom: 10px; margin-bottom: 15px;">2. Publicera meddelande</h4>
+                        
+                        <div class="sim-input-group">
+                            <label class="sim-label">Målämne</label>
+                            <input type="text" id="pub-topic" class="sim-input" placeholder="t.ex. sensors/temp">
+                        </div>
+
+                        <div class="sim-input-group">
+                            <label class="sim-label">Meddelandedata (JSON/Text)</label>
+                            <textarea id="pub-payload" class="sim-input" rows="3" placeholder='{"value": 24.5, "unit": "C"}'></textarea>
+                        </div>
+
+                        <div class="sim-input-group">
+                            <label class="sim-label">QoS-nivå</label>
+                            <select id="pub-qos" class="sim-input">
+                                <option value="0">0 - Högst en gång</option>
+                                <option value="1">1 - Minst en gång</option>
+                                <option value="2">2 - Exakt en gång</option>
+                            </select>
+                        </div>
+
+                        <button id="btn-pub" class="sim-btn sim-btn-pub" onclick="simPublish()" disabled>Publicera paket</button>
+                    </div>
+
+                    <!-- Log Window -->
+                    <div class="sim-log" id="console-log">
+                        <div class="log-entry log-info">[System] Simulator initierad. Redo att ansluta.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 4: QOS EXPLAINED
+    -->
+    <section id="qos" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2>Tjänstekvalitet (QoS)</h2>
+            <p>MQTT erbjuder tre specifika tjänstekvalitetsnivåer för meddelandeleverans. Detta gör att utvecklaren kan välja rätt balans mellan omkostnader och tillförlitlighet för specifika meddelanden.</p>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 900; color: #e0e0e0; position: absolute; top: 10px; right: 20px;">0</div>
+                    <h3>QoS 0</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 0.8rem;">Högst en gång</p>
+                    <p>Även känd som "Fire and forget". Meddelandet skickas en gång. Ingen bekräftelse förväntas. Om anslutningen bryts eller servern är upptagen går meddelandet förlorat för alltid.</p>
+                    <p style="font-size: 0.9rem; margin-top: auto;"><em>Användningsfall: Periodisk temperatursensordata där missad data (en av hundra avläsningar) inte är kritisk.</em></p>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 900; color: #e0e0e0; position: absolute; top: 10px; right: 20px;">1</div>
+                    <h3>QoS 1</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 0.8rem;">Minst en gång</p>
+                    <p>Garanterar att ett meddelande levereras minst en gång till mottagaren. Avsändaren lagrar meddelandet tills den får ett <code>PUBACK</code>-paket. Dubbletter kan uppstå om bekräftelsen går förlorad.</p>
+                    <p style="font-size: 0.9rem; margin-top: auto;"><em>Användningsfall: Slå på en strömbrytare. Du vill definitivt att den ska slås på, och att det görs två gånger är acceptabelt.</em></p>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 3rem; font-weight: 900; color: #e0e0e0; position: absolute; top: 10px; right: 20px;">2</div>
+                    <h3>QoS 2</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 0.8rem;">Exakt en gång</p>
+                    <p>Den säkraste och långsammaste nivån. Garanterar att meddelandet tas emot exakt en gång med hjälp av ett handslag i fyra steg. Detta förhindrar dubbletter.</p>
+                    <p style="font-size: 0.9rem; margin-top: auto;"><em>Användningsfall: Banktransaktioner, faktureringssystem eller kritiska larm där dubbletter orsakar fel.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 5: CODE EXAMPLES
+    -->
+    <section id="code" class="section">
+        <div class="container">
+            <h2>Exempel på implementering</h2>
+            <p>MQTT har klientbibliotek tillgängliga för nästan alla programmeringsspråk (C, C++, Java, Python, Go, JavaScript, etc.).</p>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Python (Paho-MQTT)</h3>
+                    <p>Standardbiblioteket för Python IoT-appar.</p>
+                    <pre><code>import paho.mqtt.client as mqtt
+
+# Callback när anslutning upprättats
+def on_connect(client, userdata, flags, rc):
+    print(f"Connected with result code {rc}")
+    # Att prenumerera i on_connect säkerställer 
+    # att vi återprenumererar om anslutningen bryts
+    client.subscribe("home/sensors/#")
+
+# Callback när meddelande tas emot
+def on_message(client, userdata, msg):
+    print(f"{msg.topic}: {msg.payload.decode()}")
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect("broker.hivemq.com", 1883, 60)
+client.loop_forever()</code></pre>
+                </div>
+
+                <div class="card">
+                    <h3>JavaScript (Node.js)</h3>
+                    <p>Använder MQTT.js-biblioteket för asynkrona operationer.</p>
+                    <pre><code>const mqtt = require('mqtt')
+// Anslut till en offentlig testmäklare
+const client  = mqtt.connect('mqtt://test.mosquitto.org')
+
+client.on('connect', function () {
+  console.log("Connected!")
+  
+  // Prenumerera på presence-ämnet
+  client.subscribe('presence', function (err) {
+    if (!err) {
+      // Publicera ett meddelande
+      client.publish('presence', 'Hello mqtt')
+    }
+  })
+})
+
+client.on('message', function (topic, message) {
+  // meddelandet är en Buffer
+  console.log(message.toString())
+  client.end() // Stäng anslutning
+})</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        SECTION 6: FAQ ACCORDION
+    -->
+    <section id="faq" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2>Vanliga frågor (FAQ)</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        Är MQTT säkert?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Som standard skickar MQTT data i klartext, vilket inte är säkert. Produktionstillämpningar använder dock vanligtvis TLS/SSL för att kryptera anslutningen (MQTTS), oftast på port 8883. Dessutom kan användarnamn/lösenordsautentisering och klientcertifikat användas för att auktorisera enheter på mäklarnivå.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        Vad är ett kvarhållet (Retained) meddelande?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Ett kvarhållet meddelande är ett vanligt MQTT-meddelande med "retained"-flaggan inställd på sant. Mäklaren lagrar det senast kvarhållna meddelandet för det ämnet. När en ny klient prenumererar på det ämnet får den omedelbart det kvarhållna meddelandet. Det är användbart för "statusuppdateringar" (t.ex. att ge den senast kända temperaturen till en enhet som just har vaknat).</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        Vad är Last Will and Testament (LWT)?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>LWT är en funktion där en klient anger ett meddelande som automatiskt publiceras av mäklaren om klienten kopplas från oväntat (t.ex. batteriet dör, nätverksfel). Det låter andra klienter veta att en enhet har gått offline oväntat.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        Vilken port använder MQTT?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Standard-MQTT använder TCP-port 1883. MQTT över SSL/TLS använder port 8883. MQTT över WebSockets använder vanligtvis port 80 eller 443 (om den är säker), eller anpassade portar som 9001 beroende på mäklarens konfiguration.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        Vad är en Clean Session (Ren session)?
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>När en klient ansluter med "Clean Session = false" skapar mäklaren en beständig session. Den sparar alla prenumerationer och köar QoS 1- och 2-meddelanden för klienten medan den är offline. När klienten återansluter får den alla missade meddelanden.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        FOOTER
+    -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <!-- Updated Footer Branding -->
+                    <h4>Om MQTT</h4>
+                    <p>Vi tillhandahåller den mest omfattande dokumentationen och verktygen för utvecklare som bygger IoT-lösningar med hjälp av MQTT-protokollet. Vårt uppdrag är att göra IoT-anslutningar tillgängliga för alla.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resurser</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://mqtt.org/documentation/" target="_blank" rel="noopener">Officiell dokumentation</a></li>
+                        <li><a href="https://mosquitto.org/" target="_blank" rel="noopener">Mosquitto-mäklare</a></li>
+                        <li><a href="https://www.hivemq.com/mqtt/" target="_blank" rel="noopener">HiveMQ Grunderna</a></li>
+                        <li><a href="https://github.com/mqttjs/MQTT.js" target="_blank" rel="noopener">MQTT.js-bibliotek</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Webbplatskarta</h4>
+                    <ul class="footer-links">
+                        <li><a href="#basics">Grunderna</a></li>
+                        <li><a href="#architecture">Arkitektur</a></li>
+                        <li><a href="#simulator">Simulator</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <!-- Retaining Company Name for Copyright as per instructions -->
+                <p>&copy; 2026 MQTTWebs. Med ensamrätt.</p>
+                <p><small>Denna webbplats är för utbildningsändamål. MQTT är ett varumärke som tillhör OASIS.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+        JAVASCRIPT LOGIC
+        Handles UI interactions, Dark Mode, and the MQTT Simulator Logic.
+        No external dependencies.
+    -->
+    <script>
+        /**
+         * =========================================
+         * 1. UI LOGIC: MOBILE MENU & THEME
+         * =========================================
+         */
+        
+        // Mobile Navigation Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', toggleMenu);
+
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            
+            // Animate hamburger lines
+            const spans = hamburger.querySelectorAll('span');
+            if (isExpanded) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Dark Mode Logic
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('svg');
+
+        // Check local storage or system preference
+        const savedTheme = localStorage.getItem('mqtt-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            enableDarkMode();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+
+        function enableDarkMode() {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('mqtt-theme', 'dark');
+            // Change icon to Moon
+            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+        }
+
+        function disableDarkMode() {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('mqtt-theme', 'light');
+            // Change icon to Sun
+            icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+        }
+
+        // Accordion Logic
+        const accHeaders = document.querySelectorAll('.accordion-header');
+        accHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                // Close all others
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.accordion-content').style.maxHeight = null;
+                    i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        /**
+         * =========================================
+         * 2. MQTT SIMULATOR LOGIC
+         * =========================================
+         * Simulates a broker and client interaction locally.
+         */
+        
+        // State
+        let isConnected = false;
+        let subscriptions =[];
+        const consoleLog = document.getElementById('console-log');
+        
+        // DOM Elements
+        const btnConnect = document.getElementById('btn-connect');
+        const btnDisconnect = document.getElementById('btn-disconnect');
+        const btnSub = document.getElementById('btn-sub');
+        const btnPub = document.getElementById('btn-pub');
+        const statusDot = document.getElementById('connection-status');
+        const statusText = document.getElementById('status-text');
+        const subsList = document.getElementById('subs-list');
+        const clientIdInput = document.getElementById('clientId');
+
+        // Initialize: Random Client ID generator
+        clientIdInput.value = 'web-client-' + Math.floor(Math.random() * 100000).toString(16);
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `log-entry log-${type}`;
+            const time = new Date().toLocaleTimeString('sv-SE', { hour12: false });
+            div.innerHTML = `<span style="opacity:0.6;">[${time}]</span> ${message}`;
+            consoleLog.appendChild(div);
+            // Auto scroll to bottom
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+        }
+
+        function simConnect() {
+            log('Initierar anslutning till broker.mqttwebs.com...', 'info');
+            btnConnect.disabled = true;
+            btnConnect.textContent = 'Ansluter...';
+
+            // Simulate network handshake latency
+            setTimeout(() => {
+                isConnected = true;
+                statusDot.classList.add('connected');
+                statusText.textContent = 'Ansluten';
+                statusText.style.color = 'var(--success)';
+                
+                // Toggle Buttons
+                btnConnect.style.display = 'none';
+                btnDisconnect.style.display = 'inline-block';
+                btnDisconnect.disabled = false;
+                
+                btnSub.disabled = false;
+                btnPub.disabled = false;
+                
+                // Update Subs UI
+                renderSubs();
+                
+                log('CONNACK mottaget (RC: 0). Anslutning accepterad.', 'success');
+                log('Säker session upprättad.', 'info');
+            }, 1200);
+        }
+
+        function simDisconnect() {
+            log('Skickar DISCONNECT-paket...', 'info');
+            
+            setTimeout(() => {
+                isConnected = false;
+                subscriptions =[]; // Clean session simulation
+                renderSubs();
+                
+                statusDot.classList.remove('connected');
+                statusText.textContent = 'Frånkopplad';
+                statusText.style.color = '#fff';
+                
+                // Toggle Buttons
+                btnConnect.style.display = 'inline-block';
+                btnConnect.textContent = 'Anslut till mäklare';
+                btnConnect.disabled = false;
+                
+                btnDisconnect.style.display = 'none';
+                
+                btnSub.disabled = true;
+                btnPub.disabled = true;
+                
+                log('Klienten frånkopplad på ett kontrollerat sätt.', 'error');
+            }, 500);
+        }
+
+        function simSubscribe() {
+            const topicInput = document.getElementById('sub-topic');
+            const topic = topicInput.value.trim();
+            
+            if (!topic) {
+                log('Fel: Ämne kan inte vara tomt.', 'error');
+                topicInput.focus();
+                return;
+            }
+
+            if (topic.includes(' ')) {
+                 log('Fel: Ämnen kan inte innehålla mellanslag.', 'error');
+                 return;
+            }
+
+            if (subscriptions.includes(topic)) {
+                log(`Varning: Redan prenumererad på ${topic}`, 'warning');
+                return;
+            }
+
+            log(`Skickar SUBSCRIBE-paket [Ämne: ${topic}, QoS: 1]`, 'info');
+            
+            // Disable button briefly
+            btnSub.disabled = true;
+            
+            setTimeout(() => {
+                log(`SUBACK mottaget. Prenumererar på ${topic}`, 'success');
+                subscriptions.push(topic);
+                renderSubs();
+                topicInput.value = '';
+                btnSub.disabled = false;
+            }, 400);
+        }
+
+        function renderSubs() {
+            subsList.innerHTML = '';
+            
+            if (!isConnected) {
+                subsList.innerHTML = '<li style="color: #666; list-style: none; margin-left: -20px;">Inte ansluten</li>';
+                return;
+            }
+
+            if (subscriptions.length === 0) {
+                subsList.innerHTML = '<li style="color: #aaa; list-style: none; margin-left: -20px;">Inga aktiva prenumerationer</li>';
+                return;
+            }
+            
+            subscriptions.forEach(sub => {
+                const li = document.createElement('li');
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+                li.style.marginBottom = '5px';
+                
+                const textSpan = document.createElement('span');
+                textSpan.textContent = sub;
+                
+                // Add unsubscribe button (X)
+                const delBtn = document.createElement('button');
+                delBtn.textContent = '✕';
+                delBtn.title = 'Säg upp prenumeration';
+                delBtn.style.background = 'none';
+                delBtn.style.border = 'none';
+                delBtn.style.color = '#ef9a9a';
+                delBtn.style.cursor = 'pointer';
+                delBtn.style.padding = '0 5px';
+                
+                delBtn.onclick = () => {
+                    log(`Avslutar prenumeration på ${sub}...`, 'info');
+                    subscriptions = subscriptions.filter(s => s !== sub);
+                    log(`UNSUBACK mottaget.`, 'success');
+                    renderSubs();
+                };
+                
+                li.appendChild(textSpan);
+                li.appendChild(delBtn);
+                subsList.appendChild(li);
+            });
+        }
+
+        function simPublish() {
+            const topicInput = document.getElementById('pub-topic');
+            const payloadInput = document.getElementById('pub-payload');
+            const qosSelect = document.getElementById('pub-qos');
+
+            const topic = topicInput.value.trim();
+            const payload = payloadInput.value.trim();
+            const qos = qosSelect.value;
+
+            if (!topic) {
+                log('Fel: Publiceringsämne krävs.', 'error');
+                topicInput.focus();
+                return;
+            }
+            
+            if (!payload) {
+                log('Fel: Meddelandedata krävs.', 'error');
+                payloadInput.focus();
+                return;
+            }
+
+            log(`Publicerar till[${topic}] QoS:${qos} | Storlek: ${payload.length}b`, 'info');
+
+            // Simulate Publish Latency based on QoS
+            const delay = 300 * (parseInt(qos) + 1);
+
+            setTimeout(() => {
+                if (qos === '1') log('PUBACK mottaget (QoS 1).', 'success');
+                if (qos === '2') log('PUBREC -> PUBREL -> PUBCOMP mottaget (QoS 2).', 'success');
+                
+                // SIMULATION LOGIC: Loopback
+                // If we are subscribed to this topic (or a matching wildcard), echo the message back
+                checkSubscriptionsAndEcho(topic, payload);
+
+            }, delay);
+        }
+
+        function checkSubscriptionsAndEcho(topic, payload) {
+            let match = false;
+            let matchSub = '';
+            
+            subscriptions.forEach(sub => {
+                if (mqttMatch(sub, topic)) {
+                    match = true;
+                    matchSub = sub;
+                }
+            });
+
+            if (match) {
+                setTimeout(() => {
+                    log(`INKOMMANDE MEDDELANDE [${topic}]: ${payload}`, 'msg');
+                    // Add a small visual flash to the log to indicate arrival
+                    const lastLog = consoleLog.lastChild;
+                    lastLog.style.borderLeft = '4px solid #fff59d';
+                }, 200);
+            }
+        }
+
+        // MQTT Topic Matching Logic (Wildcards + and #)
+        function mqttMatch(filter, topic) {
+            if (filter === '#' || filter === topic) return true;
+            
+            const filterParts = filter.split('/');
+            const topicParts = topic.split('/');
+
+            for (let i = 0; i < filterParts.length; ++i) {
+                const left = filterParts[i];
+                const right = topicParts[i];
+
+                if (left === '#') return topicParts.length >= i;
+                if (left !== '+' && left !== right) return false;
+            }
+
+            return filterParts.length === topicParts.length;
+        }
+        
+        // Helper: Adjust CSS Variable for VH on mobile
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        window.addEventListener('resize', setVH);
+        setVH();
+
+        // Initial Hint
+        setTimeout(() => {
+            if(!isConnected) {
+                log('Tips: Klicka på "Anslut till mäklare" för att starta simulatorn.', 'warning');
+            }
+        }, 1500);
+
+    </script>
+</body>
+</html>
